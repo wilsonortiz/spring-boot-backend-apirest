@@ -66,4 +66,16 @@ public class ClientServiceImpl implements IClientService {
 		}
 	}
 
+	@Override
+	public ClientDTO delete(Long id) {
+		Optional<ClientEntity> response = this.clientDao.findById(id);
+
+		if (response.isPresent()) {
+			this.clientDao.delete(response.get());
+			return this.modelMapper.map(response.get(), ClientDTO.class);
+		} else {
+			throw new NotFoundException("id: " + id);
+		}
+	}
+
 }

@@ -14,4 +14,6 @@ public interface IClientService {
 
 	public ClientDTO update(Long id, ClientDTO client);
 
+	public ClientDTO delete(Long id);
+
 }
